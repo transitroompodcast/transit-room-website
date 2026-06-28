@@ -389,6 +389,81 @@ h3 {
   color: var(--muted);
 }
 
+.form-section {
+  padding-top: 28px;
+}
+
+.form-heading {
+  max-width: 780px;
+  margin-bottom: 24px;
+}
+
+.form-heading p:last-child {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.speaker-form {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(20px, 4vw, 34px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(189, 241, 59, 0.12), transparent 30%),
+    linear-gradient(145deg, rgba(16, 26, 18, 0.96), rgba(6, 10, 7, 0.96));
+  box-shadow: 0 24px 70px var(--shadow);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.speaker-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.speaker-form span {
+  color: var(--green-strong);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.speaker-form input,
+.speaker-form textarea {
+  width: 100%;
+  border: 1px solid rgba(189, 241, 59, 0.24);
+  border-radius: 8px;
+  background: rgba(3, 7, 4, 0.78);
+  color: var(--text);
+  font: inherit;
+  padding: 14px 15px;
+  outline: none;
+}
+
+.speaker-form input:focus,
+.speaker-form textarea:focus {
+  border-color: rgba(189, 241, 59, 0.76);
+  box-shadow: 0 0 0 3px rgba(189, 241, 59, 0.12);
+}
+
+.speaker-form textarea {
+  resize: vertical;
+}
+
+.full-field {
+  grid-column: 1 / -1;
+}
+
+.form-submit {
+  border: 0;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
 .contact-inner {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -476,8 +551,13 @@ h3 {
   .program-grid,
   .benefit-list,
   .contact-links,
-  .values-grid {
+  .values-grid,
+  .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .full-field {
+    grid-column: auto;
   }
 }
 

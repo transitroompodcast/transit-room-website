@@ -22,7 +22,7 @@
         <a href="#narasumber">Narasumber</a>
         <a href="#kontak">Kontak</a>
       </nav>
-      <a class="nav-cta" href="mailto:transitroom.podcast@gmail.com">Jadi Narasumber</a>
+      <a class="nav-cta" href="#form-narasumber">Jadi Narasumber</a>
     </header>
 
     <main>
@@ -41,7 +41,7 @@
             dan sudut pandang yang dekat dengan banyak orang.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#narasumber">Jadi Narasumber</a>
+            <a class="button primary" href="#form-narasumber">Jadi Narasumber</a>
             <a class="button secondary" href="#playlist">Lihat Playlist</a>
           </div>
         </div>
@@ -169,7 +169,7 @@
               hidup, perjalanan kerja, pengalaman usaha, perspektif personal, atau
               pelajaran yang mungkin sedang dibutuhkan orang lain.
             </p>
-            <a class="button primary" href="mailto:transitroom.podcast@gmail.com">Hubungi Transit Room</a>
+            <a class="button primary" href="#form-narasumber">Isi Form Narasumber</a>
           </div>
 
           <div class="benefit-list" aria-label="Keuntungan menjadi narasumber">
@@ -196,6 +196,51 @@
           <figure class="wide-image">
             <img src="assets/narasumber-transit-room.png" alt="Poster keuntungan menjadi narasumber Transit Room.">
           </figure>
+        </div>
+
+        <div class="section-inner form-section" id="form-narasumber">
+          <div class="form-heading">
+            <p class="section-kicker">Form Narasumber</p>
+            <h2>Daftar untuk ngobrol di Transit Room.</h2>
+            <p>
+              Isi data singkat berikut. Setelah menekan kirim, aplikasi email Anda
+              akan terbuka dengan pesan yang sudah tersusun untuk tim Transit Room.
+            </p>
+          </div>
+
+          <form class="speaker-form" id="speakerForm">
+            <div class="form-grid">
+              <label>
+                <span>Nama Lengkap</span>
+                <input type="text" name="nama" placeholder="Nama Anda" required>
+              </label>
+              <label>
+                <span>Profesi / Aktivitas</span>
+                <input type="text" name="profesi" placeholder="Contoh: HR, entrepreneur, pekerja lapangan" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="nama@email.com" required>
+              </label>
+              <label>
+                <span>No. WhatsApp</span>
+                <input type="tel" name="whatsapp" placeholder="08xxxxxxxxxx" required>
+              </label>
+              <label class="full-field">
+                <span>Tema Cerita</span>
+                <input type="text" name="tema" placeholder="Contoh: perjalanan karier, leadership, pengalaman hidup" required>
+              </label>
+              <label class="full-field">
+                <span>Ringkasan Cerita</span>
+                <textarea name="cerita" rows="5" placeholder="Ceritakan singkat topik atau pengalaman yang ingin dibagikan" required></textarea>
+              </label>
+              <label class="full-field">
+                <span>Akun Media Sosial</span>
+                <input type="text" name="sosial" placeholder="Instagram / TikTok / LinkedIn jika ada">
+              </label>
+            </div>
+            <button class="button primary form-submit" type="submit">Kirim Form Narasumber</button>
+          </form>
         </div>
       </section>
 
@@ -238,5 +283,32 @@
         </div>
       </section>
     </main>
+    <script>
+      const speakerForm = document.querySelector("#speakerForm");
+
+      speakerForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(speakerForm);
+        const lines = [
+          "Halo Transit Room, saya ingin mendaftar sebagai narasumber.",
+          "",
+          `Nama: ${formData.get("nama")}`,
+          `Profesi / Aktivitas: ${formData.get("profesi")}`,
+          `Email: ${formData.get("email")}`,
+          `No. WhatsApp: ${formData.get("whatsapp")}`,
+          `Tema Cerita: ${formData.get("tema")}`,
+          "",
+          "Ringkasan Cerita:",
+          `${formData.get("cerita")}`,
+          "",
+          `Akun Media Sosial: ${formData.get("sosial") || "-"}`,
+        ];
+
+        const subject = encodeURIComponent("Pendaftaran Narasumber Transit Room");
+        const body = encodeURIComponent(lines.join("\n"));
+        window.location.href = `mailto:transitroom.podcast@gmail.com?subject=${subject}&body=${body}`;
+      });
+    </script>
   </body>
 </html>
